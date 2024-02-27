@@ -26,7 +26,7 @@ jobs:
         run: pip install fonttools
 
       - name: Run subsetter
-        run: py .github/workflows/webfont-subsetter.py
+        run: python .github/workflows/webfont-subsetter.py
       
       - name: Record version
         id: version-output
