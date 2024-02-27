@@ -247,7 +247,11 @@ def subset_iming():
                 shutil.rmtree(webfont_root_dir)
     
     # 读取需要优先的字符列表
-    priority_list = [line.strip() for line in open("priority_char_list.txt", "r", encoding="utf-8")]
+    priority_filename = "priority_char_list.txt"
+    if os.path.exists(priority_filename):
+        priority_list = [line.strip() for line in open(, "r", encoding="utf-8")]
+    else:
+        priority_list = []
 
     # 打开字体，生成 Unicode 字表和 opentype 功能
     ttf = TTFont(fonts_to_subset[0]["path"], 0, allowVID=0,
