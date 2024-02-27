@@ -249,7 +249,7 @@ def subset_iming():
     # 读取需要优先的字符列表
     priority_filename = "priority_char_list.txt"
     if os.path.exists(priority_filename):
-        priority_list = [line.strip() for line in open(, "r", encoding="utf-8")]
+        priority_list = [line.strip() for line in open(priority_filename, "r", encoding="utf-8")]
     else:
         priority_list = []
 
