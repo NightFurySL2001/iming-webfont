@@ -210,9 +210,16 @@ def subset_worker(task):
     print("Generating {}".format(out_file))
     ftSubset(args)
 
+def is_number(s):
+    try:
+        float(s) # for int, long, float
+    except ValueError:
+        return False
+    return True
+
 def detect_latest_version(iming_src_repo):
     dir_content = os.listdir(iming_src_repo)
-    dir_list =[entry for entry in dir_content if os.path.isdir(os.path.join(iming_src_repo, entry))]
+    dir_list =[entry for entry in dir_content if os.path.isdir(os.path.join(iming_src_repo, entry)) and is_number(entry)]
     sorted_list = sorted(dir_list, reverse=True, key=float)
     return sorted_list[0]
 
