@@ -279,7 +279,7 @@ def subset_iming():
         main_css += "@import url('./%s');\n" % os.path.join(webfont_root, css_filename).replace("\\", "/")
     
     # save main css file
-    main_css_path = "I.Ming.css"
+    main_css_path = "index.css"
     with open(main_css_path, 'w', newline='\n') as f:
         f.write(main_css)
 
