@@ -195,7 +195,7 @@ def prepare_font_subset(source_file, css_font_family_name, output_parent=None, j
             tasks.append((out_path, args))
     
     # save css file
-    css_filename = filename.replace(".", "-") + ".css"
+    css_filename = filename + ".css"
     css_path = os.path.join(output_parent, css_filename)
     with open(css_path, 'w', newline='\n') as f:
         f.write(css)
@@ -238,12 +238,11 @@ def subset_iming():
 
     # 检查存在的字体
     fonts_to_subset = []
-    for index, file_prefix in enumerate(subset_font_prefix):
-        font_relative_path = os.path.join(iming_src_repo, latest_ver, file_prefix + "-" + latest_ver + ".ttf")
+    for index, webfont_root_dir in enumerate(subset_font_prefix):
+        font_relative_path = os.path.join(iming_src_repo, latest_ver, webfont_root_dir + "-" + latest_ver + ".ttf")
         if os.path.isfile(font_relative_path):
-            webfont_root_dir = file_prefix.replace(".", "-")
             fonts_to_subset.append({
-                "family-name": file_prefix,
+                "family-name": webfont_root_dir,
                 "path": font_relative_path, 
                 "acronym": acronyms[index],
                 "root": webfont_root_dir,
