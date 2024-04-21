@@ -194,8 +194,8 @@ def prepare_font_subset(source_file, css_font_family_name, output_parent=None, j
             ]
             tasks.append((out_path, args))
     
-    # save css file
-    css_filename = filename + ".css"
+    # save css file with family name to avoid include version number
+    css_filename = css_font_family_name + ".css"
     css_path = os.path.join(output_parent, css_filename)
     with open(css_path, 'w', newline='\n') as f:
         f.write(css)
