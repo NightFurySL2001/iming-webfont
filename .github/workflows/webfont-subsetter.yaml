@@ -19,6 +19,11 @@ jobs:
         with:
           submodules: recursive
       
+      - name: Pull & update submodule fonts
+        run: |
+          git submodule update --init --recursive
+          git submodule update --recursive --remote
+      
       - name: Setup Python
         uses: actions/setup-python@v5
       
