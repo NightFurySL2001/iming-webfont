@@ -36,3 +36,14 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Bump version to ${{ steps.version-output.outputs.version }}
+
+      - name: Create Tag
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: `refs/tags/${{ steps.version-output.outputs.version }}`,
+              sha: context.sha
+            })
